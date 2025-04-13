@@ -1,79 +1,93 @@
-# Data Project Template
+# HTO Mass Balance Calculator
 
-<a target="_blank" href="https://datalumina.com/">
-    <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
-</a>
+A Python application for performing mass balance calculations for hydrothermal oxidation (HTO) batch reactors with multiple feed streams.
 
-## Cookiecutter Data Science
-This project template is a simplified version of the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org) template, created to suit the needs of Datalumina and made available as a GitHub template.
+## Features
 
-## Adjusting .gitignore
+- **User-friendly GUI** for inputting feed stream data and reactor parameters
+- **Multiple feed streams** with customizable components
+- **Unit conversion** to handle different input units for mass flow rates
+- **Visual results** including tabular data and pie charts
+- **Export capability** to save results in CSV format
 
-Ensure you adjust the `.gitignore` file according to your project needs. For example, since this is a template, the `/data/` folder is commented out and data will not be exlucded from source control:
+## Installation
 
-```plaintext
-# exclude data from source control by default
-# /data/
+### Prerequisites
+
+- Python 3.7 or higher
+- PyQt5
+- NumPy
+- Pandas
+- Matplotlib
+
+### Setup
+
+1. Clone this repository:
+   ```
+   git clone https://github.com/yourusername/hto-massbalance.git
+   cd hto-massbalance
+   ```
+
+2. Create and activate a virtual environment (recommended):
+   ```
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows, use .venv\Scripts\activate
+   ```
+
+3. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+1. Run the application:
+   ```
+   python main.py
+   ```
+
+2. Using the application:
+   - Add feed streams and components in the "Feed Streams" tab
+   - Define reactor parameters in the "Reactor Parameters" tab
+   - Click "Calculate Mass Balance" to perform the calculation
+   - View results in tabular format
+   - Toggle the chart view to see a visual representation
+   - Export results to CSV if needed
+
+## Application Structure
+
+- `main.py`: Main entry point for the application
+- `src/`: Source code directory
+  - `gui/`: GUI components
+    - `app.py`: Main application window
+    - `feed_stream.py`: Feed stream input components
+    - `reactor.py`: Reactor parameters input components
+    - `results.py`: Results display components
+  - `modeling/`: Calculation logic
+    - `mass_balance.py`: Mass balance calculation functions
+
+## Building an Executable
+
+To build a standalone executable for Windows:
+
+```
+pyinstaller --onefile --windowed main.py
 ```
 
-Typically, you want to exclude this folder if it contains either sensitive data that you do not want to add to version control or large files.
+The executable will be created in the `dist` directory.
 
-## Duplicating the .env File
-To set up your environment variables, you need to duplicate the `.env.example` file and rename it to `.env`. You can do this manually or using the following terminal command:
+## Future Features
 
-```bash
-cp .env.example .env # Linux, macOS, Git Bash, WSL
-copy .env.example .env # Windows Command Prompt
-```
+- Saving and loading feed stream configurations
+- Advanced reporting capabilities
+- Thermodynamic calculations
+- Reaction kinetics modeling
+- Handle output streams and phase separations
+- More advanced visualizations
 
-This command creates a copy of `.env.example` and names it `.env`, allowing you to configure your environment variables specific to your setup.
+## License
 
-
-## Project Organization
-
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── README.md          <- The top-level README for developers using this project
-├── data
-│   ├── external       <- Data from third party sources
-│   ├── interim        <- Intermediate data that has been transformed
-│   ├── processed      <- The final, canonical data sets for modeling
-│   └── raw            <- The original, immutable data dump
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-└── src                         <- Source code for this project
-    │
-    ├── __init__.py             <- Makes src a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    │    
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    ├── plots.py                <- Code to create visualizations 
-    │
-    └── services                <- Service classes to connect with external platforms, tools, or APIs
-        └── __init__.py 
-```
+[MIT License](LICENSE)
+````
 
 --------
